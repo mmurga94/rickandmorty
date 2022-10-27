@@ -12,9 +12,9 @@ export default function CharacterDetail(){
     const character = useSelector(state => state.characterDetail)
     const loading = useSelector(state => state.loading)
 
-    // useEffect(() => {
-    //     dispatch(getCharactersDetail(params.id))
-    // }, [])
+    useEffect(() => {
+        dispatch(getCharactersDetail(params.id))
+    }, [])
 
     return(
             loading ? 

@@ -11,9 +11,9 @@ export default function Characters(){
     const dispatch = useDispatch();
     const characters = useSelector(state => state.characters);
 
-    // useEffect(() => {
-    //     dispatch(getCharacters());
-    // }, [])
+    useEffect(() => {
+        dispatch(getCharacters());
+    }, [])
 
     function handleCondition(e){
         setFiltro(e.target.value)
