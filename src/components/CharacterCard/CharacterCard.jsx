@@ -1,16 +1,32 @@
 import React from "react";
 import style from "./../CharacterCard/CharacterCard.module.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite } from "../../redux/actions";
 
 export default function CharacterCard({name, status, image, id}){
 
+    const dispatch = useDispatch();
+    const favorites = useSelector(state => state.favorites)
+
+    function handleFavorite(id){
+        const CHARACTER_ALREADY_IN_FAVORITES = favorites.some(c => c.id === id)
+        CHARACTER_ALREADY_IN_FAVORITES ? alert('personaje ya se encuentra en favorito') : dispatch(addFavorite(id)) 
+
+    }
+
     return(
         <>
-            <NavLink to={`/character/${id}`} className={style.card} >
-                    <img src={image} alt={name} />
+            <div className={style.card} >
+                    <NavLink to={`/character/${id}`} className={style.link}>
+                        <img src={image} alt={name} /> 
+                    </NavLink>
                     <h2>{name}</h2>
-                    <p> Status: {handleStatus(status)} </p>
-            </NavLink>
+                    <div className={style.infoContainer} >
+                        <p> Status: {handleStatus(status)} </p>
+                        <span className={style.favorite} onClick={() => handleFavorite(id)} >❤</span>
+                    </div>
+            </div>
         </>
     )
 }

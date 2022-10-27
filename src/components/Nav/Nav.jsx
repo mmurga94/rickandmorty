@@ -18,7 +18,7 @@ export default function Nav(){
                 <NavLink to='/' className={style.link} > <img className={style.img} src="https://www.pngitem.com/pimgs/m/43-438051_rick-and-morty-title-hd-png-download.png" alt="marvel" /> </NavLink>
                 <div className={style.optionsContainer}>
                 <NavLink to='/' className={style.linkHome} > <p>HOME</p> </NavLink>
-                <NavLink to='/' className={style.linkHome} > <p>ABOUT</p> </NavLink>
+                <NavLink to='/favorites' className={style.linkHome} > <p>FAVORITES</p> </NavLink>
                 </div>
                 <img onClick={handleMenu} className={style.burgerMenu} src={img} alt="" />
             </div>

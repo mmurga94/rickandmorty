@@ -1,9 +1,10 @@
-import { GET_CHARACTERS, GET_CHARACTER_DETAIL, LOADING } from '../actions/index';
+import { GET_CHARACTERS, GET_CHARACTER_DETAIL, LOADING, ADD_FAVORITE } from '../actions/index';
 
 const initialState = {
     characters: [],
     characterDetail: {},
     loading: false,
+    favorites: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 characterDetail: action.payload.character,
                 loading: action.payload.loading
+            }
+        case ADD_FAVORITE:
+            return{
+                ...state,
+                favorites: [...state.favorites, action.payload]
             }
         case LOADING:
             return{
