@@ -24,7 +24,7 @@ export default function Nav(){
             </div>
             <div className={active ? style.optionsContainerResponsive : style.none}>
                 <NavLink to='/' className={style.linkHome} > <p>HOME</p> </NavLink>
-                <NavLink to='/' className={style.linkHome} > <p>ABOUT</p> </NavLink>
+                <NavLink to='/favorites' className={style.linkHome} > <p>FAVORITES</p> </NavLink>
             </div>
         </>
     )
