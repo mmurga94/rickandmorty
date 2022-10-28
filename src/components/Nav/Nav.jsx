@@ -19,12 +19,14 @@ export default function Nav(){
                 <div className={style.optionsContainer}>
                 <NavLink to='/' className={style.linkHome} > <p>HOME</p> </NavLink>
                 <NavLink to='/favorites' className={style.linkHome} > <p>FAVORITES</p> </NavLink>
+                <NavLink to='/about' className={style.linkHome} > <p>ABOUT</p> </NavLink>
                 </div>
                 <img onClick={handleMenu} className={style.burgerMenu} src={img} alt="" />
             </div>
             <div className={active ? style.optionsContainerResponsive : style.none}>
                 <NavLink to='/' className={style.linkHome} > <p>HOME</p> </NavLink>
                 <NavLink to='/favorites' className={style.linkHome} > <p>FAVORITES</p> </NavLink>
+                <NavLink to='/about' className={style.linkHome} > <p>ABOUT</p> </NavLink>
             </div>
         </>
     )

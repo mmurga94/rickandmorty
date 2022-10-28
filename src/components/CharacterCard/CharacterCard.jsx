@@ -3,6 +3,7 @@ import style from "./../CharacterCard/CharacterCard.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite } from "../../redux/actions";
+import swal from "sweetalert";
 
 export default function CharacterCard({name, status, image, id}){
 
@@ -11,7 +12,18 @@ export default function CharacterCard({name, status, image, id}){
 
     function handleFavorite(id){
         const CHARACTER_ALREADY_IN_FAVORITES = favorites.some(c => c.id === id)
-        CHARACTER_ALREADY_IN_FAVORITES ? alert('personaje ya se encuentra en favorito') : dispatch(addFavorite(id)) 
+        if(CHARACTER_ALREADY_IN_FAVORITES) {
+            swal({
+                title: 'character is already in favorites',
+                icon: 'error'
+            })
+        }else{
+            dispatch(addFavorite(id)) 
+            swal({
+                title: "Character added to favorites",
+                icon: 'success'
+            })
+        }
 
     }
 
@@ -24,7 +36,7 @@ export default function CharacterCard({name, status, image, id}){
                     <h2>{name}</h2>
                     <div className={style.infoContainer} >
                         <p> Status: {handleStatus(status)} </p>
-                        <span className={style.favorite} onClick={() => handleFavorite(id)} >❤</span>
+                        <span className={style.favorite} onClick={() => handleFavorite(id)} >♥</span>
                     </div>
             </div>
         </>
@@ -34,7 +46,7 @@ export default function CharacterCard({name, status, image, id}){
 export function handleStatus(status){
     switch(status){
         case 'Alive':
-            return <span className={style.statusAlive} >❤ {status} </span>
+            return <span className={style.statusAlive} >◉ {status} </span>
         case 'Dead':
             return <span className={style.statusDead} >☠️ {status} </span>
         default:
